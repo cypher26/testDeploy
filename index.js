@@ -2,11 +2,11 @@ var express = require('express');
 var app = express();
 
 
-server = require('http').createServer(app);
+// server = require('http').createServer(app);
 
 
 
-var io = require('socket.io').listen(server);
+// var io = require('socket.io').listen(server);
 
 
 

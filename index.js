@@ -55,13 +55,13 @@ console.log('Node app is running on port', app.get('port'));
 });
 
 
-io.sockets.on('connection', function (socket) {
-	console.log('success server');
-			socket.on('adduser', function(callback){
-					console.log('success server');
-					callback();
-			});
+// io.sockets.on('connection', function (socket) {
+// 	console.log('success server');
+// 			socket.on('adduser', function(callback){
+// 					console.log('success server');
+// 					callback();
+// 			});
 	
-});
+// });
 
 

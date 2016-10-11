@@ -2,6 +2,7 @@
 
 <head>
 	<script src="/js/jquery.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
 <!-- 	// <script src="../node_modules/angular/angular.js"></script> -->
 </head>
 
@@ -12,12 +13,23 @@
 
 		<button id='btnTest'>testing</button>
 		<script>
+
+			var socket=io.connect('http://localhost:5000');
 			jQuery(function(){
 				
 
 					$('#btnTest').click(function(){
 						location.href = "about.html";
 					});
+
+
+
+					socket.emit('adduser',function (){
+							// $.ajax({url: 'phpFunc/allFunc.php', type: 'POST', dataType: 'json', data:{funcName:'logout'}, success: function (result) {}, async: false });
+							console.log('callback success');
+						
+						});
+				
 			});	
 
 		</script>

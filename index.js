@@ -1,19 +1,31 @@
 var express = require('express');
 var app = express();
 
-app.set('port', (process.env.PORT || 5000));
+
+server = require('http').createServer(app);
+
+
+
+var io = require('socket.io').listen(server);
+
+
+
+
+
+// app.set('port', (process.env.PORT || 5000));
+
+server.listen((process.env.PORT || 5000), "127.0.0.1");
 
 var router = express.Router();
 var path = __dirname + '/views/';
 
-router.use(function (req,res,next) {
-  console.log("/" + req.method);
-  next();
-});
 
 router.get("/",function(req,res){
   res.sendFile(path + "index.html");
 });
+
+
+// app.use("",express.static(__dirname + '/node_modules/socket.io/node_modules/socket.io-client'));
 
 // router.get("/about",function(req,res){
 //   res.sendFile(path + "about.html");
@@ -33,13 +45,23 @@ app.use("js",express.static(__dirname + '/js'));
 
 app.use("/",router);
 
-app.use("*",function(req,res){
-  res.sendFile(path + "404.html");
-});
+// app.use("*",function(req,res){
+//   res.sendFile(path + "404.html");
+// });
 
 app.listen(app.get('port'), function() {
 console.log('Node app is running on port', app.get('port'));
 
+});
+
+
+io.sockets.on('connection', function (socket) {
+	console.log('success server');
+			socket.on('adduser', function(callback){
+					console.log('success server');
+					callback();
+			});
+	
 });
 
 

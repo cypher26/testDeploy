@@ -12,9 +12,9 @@ var io = require('socket.io').listen(server);
 
 
 
-// app.set('port', (process.env.PORT || 5000));
+app.set('port', (process.env.PORT || 5000));
 
-server.listen((process.env.PORT || 5000), "127.0.0.1");
+// server.listen((process.env.PORT || 5000), "127.0.0.1");
 
 var router = express.Router();
 var path = __dirname + '/views/';
